@@ -1,0 +1,1072 @@
+Artificial Intelligence is the field of computer science that seeks to build
+autonomous machines—machines that can carry out complex tasks without
+human intervention. This goal requires that machines be able to perceive and
+reason. Such capabilities fall within the category of commonsense activities that,
+although natural for the human mind, are proving difficult for machines. The
+result is that work in the field continues to be challenging. In this chapter we
+explore some of the topics in this vast area of research.
+The field of artificial intelligence is quite large and merges with other subjects
+such as psychology, neurology, mathematics, linguistics, and electrical and
+mechanical engineering. To focus our thoughts, then, we begin by considering
+the concept of an agent and the types of intelligent behavior that an agent might
+exhibit. Indeed, much of the research in artificial intelligence can be categorized
+in terms of an agent’s behavior.
+An agent is a “device” that responds to stimuli from its environment. It is natural to envision an agent as an individual machine such as a robot, although an
+agent may take other forms such as an autonomous airplane, a character in an
+interactive video game, or a process communicating with other processes over
+the Internet (perhaps as a client, a server, or a peer). Most agents have sensors
+by which they receive data from their environments and actuators by which they
+can affect their environments. Examples of sensors include microphones, cameras, range sensors, and air or soil sampling devices. Examples of actuators
+include wheels, legs, wings, grippers, and speech synthesizers.
+Much of the research in artificial intelligence can be characterized in the
+context of building agents that behave intelligently, meaning that the actions of
+the agent’s actuators must be rational responses to the data received though its
+sensors. In turn, we can classify this research by considering different levels of
+these responses.
+The simplest response is a reflex action, which is merely a predetermined
+response to the input data. Higher levels of response are required to obtain more
+“intelligent” behavior. For example, we might empower an agent with knowledge
+of its environment and require that the agent adjust its actions accordingly. The
+process of throwing a baseball is largely a reflex action but determining how and
+where to throw the ball requires knowledge of the current environment. (There
+is one out with runners on first and third.) How such real-world knowledge can
+be stored, updated, accessed, and ultimately applied in the decision-making
+process continues to be a challenging problem in artificial intelligence.
+Another level of response is required if we want the agent to seek a goal such
+as winning a game of chess or maneuvering through a crowded passageway.
+Such goal-directed behavior requires that the agent’s response, or sequence of
+responses, be the result of deliberately forming a plan of action or selecting the
+best action among the current options.
+In some cases an agent’s responses improve over time as the agent learns.
+This could take the form of developing procedural knowledge (learning “how”)
+or storing declarative knowledge (learning “what”). Learning procedural
+knowledge usually involves a trial and error process by which an agent learns
+appropriate actions by being punished for poor actions and rewarded for good
+ones. Following this approach, agents have been developed that, over time,
+improve their abilities in competitive games such as checkers and chess.
+Learning declarative knowledge usually takes the form of expanding or altering
+the “facts” in an agent’s store of knowledge. For example, a baseball player must
+repeatedly adjust his or her database of knowledge (there is still just one out, but
+now runners are on first and second) from which rational responses to future
+events are determined.
+To produce rational responses to stimuli, an agent must “understand” the
+stimuli received by its sensors. That is, an agent must be able to extract information from the data produced by its sensors, or in other words, an agent must be
+able to perceive. In some cases this is a straightforward process. Signals
+obtained from a gyroscope are easily encoded in forms compatible with calculations for determining responses. But in other cases extracting information from
+input data is difficult. Examples include understanding speech and images.
+Likewise, agents must be able to formulate their responses in terms compatible
+with their actuators. This might be a straightforward process or it might require
+an agent to formulate responses as complete spoken sentences—meaning that
+the agent must generate speech. In turn, such topics as image processing and
+analysis, natural language understanding, and speech generation are important
+areas of research.
+The agent attributes that we have identified here represent past as well as
+current areas of research. Of course, they are not totally independent of each
+other. We would like to develop agents that possess all of them, producing agents
+that understand the data received from their environments and develop new
+response patterns through a learning process whose goal is to maximize the
+agent’s abilities. However, by isolating various types of rational behavior and
+pursuing them independently, researchers gain a toehold that can later be combined with progress in other areas to produce more intelligent agents.
+We close this subsection by introducing an agent that will provide a context
+for our discussion in Sections 11.2 and 11.3. The agent is designed to solve the
+eight-puzzle, which consists of eight square tiles labeled 1 through 8 mounted in
+a frame capable of holding a total of nine such tiles in three rows and three
+columns ( Figure 11.1). Among the tiles in the frame is a vacancy into which any
+of the adjacent tiles can be pushed, allowing the tiles in the frame to be scrambled. The problem posed is to move the tiles in a scrambled puzzle back to their
+initial positions (Figure 11.1).
+Our agent takes the form of a box equipped with a gripper, a video camera,
+and a finger with a rubber end so that it does not slip when pushing something
+(Figure 11.2). When the agent is first turned on, its gripper begins to open and
+close as if asking for the puzzle. When we place a scrambled eight-puzzle in the
+gripper, the gripper closes on the puzzle. After a short time the machine’s finger
+lowers and begins pushing the tiles around in the frame until they are back in
+their original positions. At this point the machine releases the puzzle and turns
+itself off.
+This puzzle-solving machine exhibits two of the agent attributes that we
+have identified. First, it must be able to perceive in the sense that it must extract
+the current puzzle state from the image it receives from its camera. We will
+address issues of understanding images in Section 11.2. Second, it must develop
+and implement a plan for obtaining a goal. We will address these issues in
+Section 11.3. To appreciate the field of artificial intelligence, it is helpful to understand that it is
+being pursued along two paths. One is the engineering track in which researchers
+are trying to develop systems that exhibit intelligent behavior. The other is a theoretical track in which researchers are trying to develop a computational understanding of animal—especially human—intelligence. This dichotomy is clarified
+by considering the manner in which the two tracks are pursued. The engineering
+approach leads to a performance-oriented methodology because the underlying
+goal is to produce a product that meets certain performance goals. The theoretical
+approach leads to a simulation-oriented methodology because the underlying
+goal is to expand our understanding of intelligence and thus the emphasis is on
+the underlying process rather than the exterior performance.
+As an example, consider the fields of natural language processing and linguistics. These fields are closely related and benefit from research in each
+other, yet the underlying goals are different. Linguists are interested in learning how humans process language and thus tend toward more theoretical
+pursuits. Researchers in the field of natural language processing are interested
+in developing machines that can manipulate natural language and therefore
+lean in the engineering direction. Thus, linguists operate in simulationoriented mode—building systems whose goals are to test theories. In contrast,
+researchers in natural language processing operate in performance-oriented
+mode—building systems to perform tasks. Systems produced in this latter
+mode (such as document translators and systems by which machines
+respond to verbal commands) rely heavily on knowledge gained by linguists
+but often apply “shortcuts” that happen to work in the restricted environment
+of the particular system.
+As an elementary example, consider the task of developing a shell for an
+operating system that receives instructions from the outside world through verbal English commands. In this case, the shell (an agent) does not need to worry
+about the entire English language. More precisely, the shell does not need to
+distinguish between the various meanings of the word copy. (Is it a noun or a
+verb? Should it carry the connotation of plagiarism?) Instead, the shell needs
+merely to distinguish the word copy from other commands such as rename and
+delete. Thus the shell could perform its task just by matching its inputs to predetermined audio patterns. The performance of such a system may be satisfactory
+to an engineer but the way it is obtained would not be aesthetically pleasing to
+a theoretician.
+In the past the Turing test (proposed by Alan Turing in 1950) has served as a
+benchmark in measuring progress in the field of artificial intelligence. Today
+the significance of the Turing test has faded although it remains an important
+part of the artificial intelligence folklore. Turing’s proposal was to allow a
+human, whom we call the interrogator, to communicate with a test subject by
+means of a typewriter system without being told whether the test subject was a
+human or a machine. In this environment, a machine would be declared to
+behave intelligently if the interrogator was not able to distinguish it from a
+human. Turing predicted that by the year 2000 machines would have a 30 percent chance of passing a five-minute Turing test—a conjecture that turned out
+to be surprisingly accurate.
+The quest to build machines that mimic human behavior has a long history, but many
+would agree that the modern field of artificial intelligence had its origins in 1950.
+This was the year that Alan Turing published the article “Computing Machinery and
+Intelligence” in which he proposed that machines could be programmed to exhibit
+intelligent behavior. The name of the field—artificial intelligence—was coined a few
+years later in the now legendary proposal written by John McCarthy who suggested
+that a “study of artificial intelligence be carried out during the summer of 1956 at
+Dartmouth College” to explore “the conjecture that every aspect of learning or any
+other feature of intelligence can in principle be so precisely described that a machine
+can be made to simulate it.”
+One reason that the Turing test is no longer considered to be a meaningful
+measure of intelligence is that an eerie appearance of intelligence can be
+produced with relative ease. A well-known example arose as a result of the program DOCTOR (a version of the more general system called ELIZA) developed
+by Joseph Weizenbaum in the mid-1960s. This interactive program was designed
+to project the image of a Rogerian analyst conducting a psychological interview;
+the computer played the role of the analyst while the user played the patient.
+Internally, all that DOCTOR did was restructure the statements made by the
+patient according to some well-defined rules and direct them back to the patient.
+For example, in response to the statement “I am tired today,” DOCTOR might
+have replied with “Why do you think you’re tired today?” If DOCTOR was unable
+to recognize the sentence structure, it merely responded with something like
+“Go on” or “That’s very interesting.”
+Weizenbaum’s purpose in developing DOCTOR dealt with the study of natural
+language communication. The subject of psychotherapy merely provided an environment in which the program could “communicate.” To Weizenbaum’s dismay,
+however, several psychologists proposed using the program for actual psychotherapy. (The Rogerian thesis is that the patient, not the analyst, should lead the discussion during the therapeutic session, and thus, they argued, a computer could
+possibly conduct a discussion as well as a therapist could.) Moreover, DOCTOR
+projected the image of comprehension so strongly that many who “communicated” with it became subservient to the machine’s question-and-answer dialogue. In a sense, DOCTOR passed the Turing test. The result was that ethical, as
+well as technical, issues were raised, and Weizenbaum became an advocate for
+maintaining human dignity in a world of advancing technology.
+More recent examples of Turing test “successes” include Internet viruses that
+carry on “intelligent” dialogs with a human victim in order to trick the human
+into dropping his or her malware guard. Moreover, phenomena similar to Turing
+tests occur in the context of computer games such as chess-playing programs.
+Although these programs select moves merely by applying brute-force techniques (similar to those we will discuss in Section 11.3), humans competing
+against the computer often experience the sensation that the machine possesses
+creativity and even a personality. Similar sensations occur in robotics where
+machines have been built with physical attributes that project intelligent characteristics. Examples include toy robot dogs that project adorable personalities
+merely by tilting their heads or lifting their ears in response to a sound.
+To respond intelligently to the input from its sensors, an agent must be able to
+understand that input. That is, the agent must be able to perceive. In this section
+we explore two areas of research in perception that have proven to be especially
+challenging—understanding images and language.
+Let us consider the problems posed by the puzzle-solving machine introduced in
+the previous section. The opening and closing of the gripper on the machine presents no serious obstacle, and the ability to detect the presence of the puzzle in the
+gripper during this process is straightforward because our application requires
+very little precision. Even the problem of focusing the camera on the puzzle can be
+handled simply by designing the gripper to position the puzzle at a particular predetermined position for viewing. Consequently, the first intelligent behavior
+required by the machine is the extraction of information through a visual medium.
+It is important to realize that the problem faced by our machine when looking at the puzzle is not that of merely producing and storing an image.
+Technology has been able to do this for years as in the case of traditional photography and television systems. Instead, the problem is to understand the image in
+order to extract the current status of the puzzle (and perhaps later to monitor the
+movement of the tiles).
+In the case of our puzzle-solving machine, the possible interpretations of the
+puzzle image are relatively limited. We can assume that what appears is always
+an image containing the digits 1 through 8 in a well-organized pattern. The problem is merely to extract the arrangement of these digits. For this, we imagine
+that the picture of the puzzle has been encoded in terms of bits in the computer’s
+memory, with each bit representing the brightness level of a particular pixel.
+Assuming a uniform size of the image (the machine holds the puzzle at a predetermined location in front of the camera), our machine can detect which tile is in
+which position by comparing the different sections of the picture to prerecorded
+templates consisting of the bit patterns produced by the individual digits used in
+the puzzle. As matches are found, the condition of the puzzle is revealed.
+This technique of recognizing images is one method used in optical character readers. It has the drawback, however, of requiring a certain degree of uniformity for the style, size, and orientation of the symbols being read. In particular,
+the bit pattern produced by a physically large character does not match the template for a smaller version of the same symbol, even though the shapes are the
+same. Moreover, you can imagine how the problems increase in difficulty when
+trying to process handwritten material.
+Another approach to the problem of character recognition is based on matching
+the geometric characteristics rather than the exact appearance of the symbols. In
+such cases the digit 1 might be characterized as a single vertical line, 2 might be an
+opened curved line joined with a horizontal straight line across the bottom, and so
+on. This method of recognizing symbols involves two steps: the first is to extract the
+features from the image being processed, and the second is to compare the features
+to those of known symbols. As with the template-matching approach, this technique for recognizing characters is not foolproof. For instance, minor errors in the
+image can produce a set of entirely different geometric features, as in the case of
+distinguishing between an O and a C or, in the case of the eight-puzzle, a 3 and an 8.
+We are fortunate in our puzzle application because we do not need to understand images of general three-dimensional scenes. Consider, for example, the
+advantage we have by being assured that the shapes to be recognized (the digits 1
+through 8) are isolated in different parts of the picture rather than appearing as
+overlapping images, as is common in more general settings. In a general photograph, for instance, one is faced not only with the problem of recognizing an
+object from different angles but also with the fact that some portions of the
+object might be hidden from view.
+The task of understanding general images is usually approached as a twostep process: (1) image processing, which refers to identifying characteristics of
+the image, and (2) image analysis, which refers to the process of understanding
+what these characteristics mean. We have already observed this dichotomy in
+the context of recognizing symbols by means of their geometric features. In that
+situation, we found image processing represented by the process of identifying
+the geometric features found in the image and image analysis represented by the
+process of identifying the meaning of those features.
+Image processing entails numerous topics. One is edge enhancement, which is
+the process of applying mathematical techniques to clarify the boundaries between
+regions in an image. In a sense, edge enhancement is an attempt to convert a
+photograph into a line drawing. Another activity in image analysis is known as
+The conjecture that machines can be programmed to exhibit intelligent behavior is
+known as weak AI and is accepted, to varying degrees, by a wide audience today.
+However, the conjecture that machines can be programmed to possess intelligence
+and, in fact, consciousness, which is known as strong AI, is widely debated.
+Opponents of strong AI argue that a machine is inherently different from a human
+and thus can never feel love, tell right from wrong, and think about itself in the same
+way that a human does. However, proponents of strong AI argue that the human mind
+is constructed from small components that individually are not human and are not
+conscious but, when combined, are. Why, they argue, would the same phenomenon
+not be possible with machines?
+The problem in resolving the strong AI debate is that such attributes as intelligence and consciousness are internal characteristics that cannot be identified
+directly. As Alan Turing pointed out, we credit other humans with intelligence
+because they behave intelligently—even though we cannot observe their internal
+mental states. Are we, then, prepared to grant the same latitude to a machine if it
+exhibits the external characteristics of consciousness? Why or why not?
+region finding. This is the process of identifying those areas in an image that have
+common properties such as brightness, color, or texture. Such a region probably
+represents a section of the image that belongs to a single object. (It is the ability to
+recognize regions that allows computers to add color to old-fashioned black and
+white motion pictures.) Still another activity within the scope of image processing
+is smoothing, which is the process of removing flaws in the image. Smoothing keeps
+errors in the image from confusing the other image-processing steps, but too much
+smoothing can cause the loss of important information as well.
+Smoothing, edge enhancement, and region finding are all steps toward identifying the various components in an image. Image analysis is the process of
+determining what these components represent and ultimately what the image
+means. Here one faces such problems as recognizing partially obstructed objects
+from different perspectives. One approach to image analysis is to start with an
+assumption about what the image might be and then try to associate the components in the image with the objects whose presence is conjectured. This appears
+to be an approach applied by humans. For instance, we sometimes find it hard to
+recognize an unexpected object in a setting in which our vision is blurred, but
+once we have a clue to what the object might be, we can easily identify it.
+The problems associated with general image analysis are enormous, and
+much research in the area remains to be done. Indeed, image analysis is one of
+the fields that demonstrates how tasks that are performed quickly and apparently
+easily by the human mind continue to challenge the capabilities of machines.
+Another perception problem that has proven challenging is that of understanding language. The success obtained in translating formal high-level programming
+languages into machine language (Section 6.4) led early researchers to believe
+that the ability to program computers to understand natural language was only a
+few years away. Indeed, the ability to translate programs gives the illusion that
+the machine actually understands the language being translated. (Recall from
+Section 6.1 the story told by Grace Hopper about managers who thought she was
+teaching computers to understand German.)
+What these researchers failed to understand was the depth to which formal
+programming languages differ from natural languages such as English, German,
+and Latin. Programming languages are constructed from well-designed primitives
+so that each statement has only one grammatical structure and only one meaning. In contrast, a statement in a natural language can have multiple meanings
+depending on its context or even the manner in which it is communicated. Thus,
+to understand natural language, humans rely heavily on additional knowledge.
+For example, the sentences
+have multiple meanings that cannot be distinguished by parsing or translating each
+word independently. Instead, to understand these sentences requires the ability to
+comprehend the context in which the statement is made. In other instances the
+true meaning of a sentence is not the same as its literal translation. For example,
+Do you know what time it is?
+often means “Please tell me what time it is,” or if the speaker has been waiting
+for a long time, it might mean “You are very late.”
+To unravel the meaning of a statement in a natural language therefore
+requires several levels of analysis. The first of these is syntactic analysis,
+whose major component is parsing. It is here that the subject of the sentence
+Mary gave John a birthday card.
+is recognized as Mary while the subject of
+John got a birthday card from Mary.
+is found to be John.
+Another level of analysis is called semantic analysis. In contrast to the
+parsing process, which merely identifies the grammatical role of each word,
+semantic analysis is charged with the task of identifying the semantic role of
+each word in the statement. Semantic analysis seeks to identify such things as
+the action described, the agent of that action (which might or might not be the
+subject of the sentence), and the object of the action. It is through semantic
+analysis that the sentences “Mary gave John a birthday card” and “John got a
+birthday card from Mary” would be recognized as saying the same thing.
+A third level of analysis is contextual analysis. It is at this level that the
+context of the sentence is brought into the understanding process. For example,
+it is easy to identify the grammatical role of each word in the sentence
+The bat fell to the ground.
+We can even perform semantic analysis by identifying the action involved as
+falling, the agent as bat, and so on. But it is not until we consider the context of the
+statement that the meaning of the statement becomes clear. In particular, it has a
+different meaning in the context of a baseball game than it does in the context of
+cave exploration. Moreover, it is at the contextual level that the true meaning of
+the question “Do you know what time it is?” would finally be revealed.
+We should note that the various levels of analysis—syntactic, semantic, and
+contextual—are not necessarily independent. The subject of the sentence
+Stampeding cattle can be dangerous.
+is the noun cattle (modified by the adjective stampeding) if we envision the cattle
+stampeding on their own. But the subject is the gerund stampeding (with object
+cattle) in the context of a troublemaker whose entertainment consists of starting
+stampedes. Thus the sentence has more than one grammatical structure—which
+one is correct depends on the context.
+Another area of research in natural language processing concerns an entire
+document rather than individual sentences. Here the problems of concern fall
+into two categories: information retrieval and information extraction.
+Information retrieval refers to the task of identifying documents that relate to
+the topic at hand. An example is the problem faced by users of the World Wide
+Web as they try to find the sites that relate to a particular topic. The current state
+of the art is to search sites for key words, but this often produces an avalanche of
+false leads and can overlook an important site because it deals with “automobiles” instead of “cars.” What is needed is a search mechanism that understands
+the contents of the sites being considered. The difficulty of obtaining such
+understanding is the reason many are turning to techniques such as XML to produce a semantic Web, as introduced in Section 4.3. Information extraction refers to the task of extracting information from documents so that it takes a form that is useful in other applications. This might
+mean identifying the answer to a specific question or recording the information
+in a form from which questions can be answered at a later date. One such form
+is known as a frame, which is essentially a template in which specifics are
+recorded. For example, consider a system for reading a newspaper. The system
+might make use of a variety of frames, one for each type of article that might
+appear in a newspaper. If the system identifies an article as reporting on a burglary, it would proceed by trying to fill in the slots in the burglary frame. This
+frame would probably request such items as the address of the burglary, the time
+and date of the burglary, the items taken, and so on. In contrast, if the system
+identifies an article as reporting on a natural disaster, it would fill in the natural
+disaster frame, which would lead the system toward identifying the type of disaster, amount of damage, and so on.
+Another form in which information extractors record information is known as
+a semantic net. This is essentially a large linked data structure in which pointers
+are used to indicate associations among the data items. Figure 11.3 shows part of
+a semantic net in which the information obtained from the sentence
+Mary hit John.
+has been highlighted.
+Artificial intelligence techniques are increasingly showing up in smartphone applications. For example, Google has developed Google Goggles, a smartphone application
+providing a visual search engine. Just take a picture of a book, landmark, or sign using
+a smartphone’s camera and Goggles will perform image processing, image analysis,
+and text recognition, and then initiate a Web search to identify the object. If you are an
+English speaker visiting in France, you can take a picture of a sign, menu, or other text
+and have it translated to English. Beyond Goggles, Google is actively working on voiceto-voice language translation. Soon you will be able to speak English into your phone
+and have your words spoken in Spanish, Chinese, or another language. Smartphones
+will undoubtedly get smarter as AI continues to be utilized in innovative ways.
+Let us now use the puzzle-solving machine introduced in Section 11.1 to explore
+techniques for developing agents with elementary reasoning abilities.
+Once our puzzle-solving machine has deciphered the positions of the tiles from
+the visual image, its task becomes that of figuring out what moves are required to
+solve the puzzle. An approach to this problem that might come to mind is to preprogram the machine with solutions to all possible arrangements of the tiles.
+Then the machine’s task would merely be to select and execute the proper program. However, the eight-puzzle has over 100,000 configurations, so the idea of
+providing an explicit solution for each is not inviting. Thus, our goal is to program
+the machine so that it can construct solutions to the eight-puzzle on its own. That
+is, the machine must be programmed to perform elementary reasoning activities.
+The development of reasoning abilities within a machine has been a topic of
+research for many years. One of the results of this research is the recognition
+that there is a large class of reasoning problems with common characteristics.
+These common characteristics are isolated in an abstract entity known as a
+production system, which consists of three main components. Each state is a situation that might occur in the application environment. The beginning state is called the start (or initial)
+state; the desired state (or states) is called the goal state. (In our case, a
+state is a configuration of the eight-puzzle; the start state is the configuration of the puzzle when it is handed to the machine; the goal state is the
+configuration of the solved puzzle as shown in Figure 11.1.)
+A production is an operation
+that can be performed in the application environment to move from one
+state to another. Each production might be associated with preconditions;
+that is, conditions might exist that must be present in the environment
+before a production can be applied. (Productions in our case are the movements of tiles. Each movement of a tile has the precondition that the
+vacancy must be next to the tile in question.)
+The control system consists of the logic that solves the
+problem of moving from the start state to the goal state. At each step in the
+process the control system must decide which of those productions whose
+preconditions are satisfied should be applied next. (Given a particular
+state in our eight-puzzle example, there would be several tiles next to the
+vacancy and therefore several applicable productions. The control system
+must decide which tile to move.)
+Note that the task assigned to our puzzle-solving machine can be formulated in
+the context of a production system. In this setting the control system takes the form
+of a program. This program inspects the current state of the eight-puzzle, identifies
+a sequence of productions that leads to the goal state, and executes this sequence. It
+is therefore our task to design a control system for solving the eight-puzzle.
+An important concept in the development of a control system is that of a
+problem space, which is the collection of all the states, productions, and preconditions in a production system. A problem space is often conceptualized in the
+form of a state graph. Here the term graph refers to a structure that mathematicians would call a directed graph, meaning a collection of locations called nodes
+connected by arrows. A state graph consists of a collection of nodes representing
+the states in the system connected by arrows representing the productions that
+shift the system from one state to another. Two nodes are connected by an arrow
+in the state graph if and only if there is a production that transforms the system
+from the state at the origin of the arrow to the state at the destination of the arrow.
+We should emphasize that just as the number of possible states prevented us
+from explicitly providing preprogrammed solutions to the eight-puzzle, the problem of magnitude prevents us from explicitly representing the entire state graph.
+A state graph is therefore a way of conceptualizing the problem at hand but not
+something that we would consider drawing in its entirety. Nonetheless, you
+might find it helpful to consider (and possibly extend) the portion of the state
+graph for the eight-puzzle displayed in Figure 11.4.
+When viewed in terms of the state graph, the problem faced by the control
+system becomes that of finding a sequence of arrows that leads from the start
+state to the goal state. After all, this sequence of arrows represents a sequence of
+productions that solves the original problem. Thus, regardless of the application,
+the task of the control system can be viewed as that of finding a path through a
+state graph. This universal view of control systems is the prize that we obtain by
+analyzing problems requiring reasoning in terms of production systems. If a
+problem can be characterized in terms of a production system, then its solution
+can be formulated in terms of searching for a path.
+To emphasize this point, let us consider how other tasks can be framed in
+terms of production systems and thus performed in the context of control systems finding paths through state graphs. One of the classic problems in artificial
+intelligence is playing games such as chess. These games involve moderate complexity in a well-defined context and hence provide an ideal environment for
+testing theories. In chess the states of the underlying production system are the
+possible board configurations, the productions are the moves of the pieces, and
+the control system is embodied in the players (human or otherwise). The start
+node of the state graph represents the board with the pieces in their initial positions. Branching from this node are arrows leading to those board configurations
+that can be reached after the first move in a game; branching from each of those
+configurations are arrows to those configurations that are reachable by the next
+move; and so on. With this formulation, we can imagine a game of chess as consisting of two players, each trying to find a path through a large state graph to a
+goal node of his or her own choosing.
+Perhaps a less obvious example of a production system is the problem of
+drawing logical conclusions from given facts. The productions in this context are
+the rules of logic, called inference rules, that allow new statements to be formed
+from old ones. For example, the statements “All super heroes are noble” and
+“Superman is a super hero” can be combined to produce “Superman is noble.”
+States in such a system consist of collections of statements known to be true at
+particular points in the deduction process: The start state is the collection of basic
+statements (often called axioms) from which conclusions are to be drawn, and a
+goal state is any collection of statements that contain the proposed conclusion.
+As an example, Figure 11.5 shows the portion of a state graph that might be traversed when the conclusion “Socrates is mortal” is drawn from the collection of
+statements “Socrates is a man,” “All men are humans,” and “All humans are mortal.”
+There we see the body of knowledge shifting from one state to another as the reasoning process applies appropriate productions to generate additional statements.
+Today, such reasoning systems, often implemented in logic programming languages (Section 6.7), are the backbone of most expert systems, which are software
+packages designed to simulate the cause-and-effect reasoning that human experts
+would follow if confronted with the same situations. Medical expert systems, for
+example, are used to assist in diagnosing ailments or developing treatments.
+We have seen that, in the context of a production system, a control system’s job
+involves searching the state graph to find a path from the start node to a goal. A
+simple method of performing this search is to traverse each of the arrows leading
+from the start state and in each case record the destination state, then traverse
+the arrows leaving these new states and again record the results, and so on. The
+search for a goal spreads out from the start state like a drop of dye in water. This
+process continues until one of the new states is a goal, at which point a solution
+has been found, and the control system needs merely to apply the productions
+along the discovered path from the start state to the goal.
+The effect of this strategy is to build a tree, called a search tree, that consists
+of the part of the state graph that has been investigated by the control system.
+The root node of the search tree is the start state, and the children of each node
+are those states reachable from the parent by applying one production. Each arc
+between nodes in a search tree represents the application of a single production,
+and each path from the root to a leaf represents a path between the corresponding states in the state graph.
+The search tree that would be produced in solving the eight-puzzle from the
+configuration shown in Figure 11.6 is illustrated in Figure 11.7. The leftmost
+branch of this tree represents an attempt to solve the problem by first moving
+the 6 tile up, the center branch represents the approach of moving the 2 tile to
+the right, and the rightmost branch represents moving the 5 tile down.
+Furthermore, the search tree shows that if we do begin by moving the 6 tile up,
+then the only production allowable next is to move the 8 tile to the right.
+(Actually, at that point we could also move the 6 tile down but that would merely
+reverse the previous production and thus be an extraneous move.)
+The goal state occurs in the last level of the search tree of Figure 11.7. Since
+this indicates that a solution has been found, the control system can terminate
+its search procedure and begin constructing the instruction sequence that will be
+used to solve the puzzle in the external environment. This turns out to be the
+simple process of walking up the search tree from the location of the goal node
+while pushing the productions represented by the tree arcs on a stack as they are
+encountered. Applying this technique to the search tree in Figure 11.7 produces
+the stack of productions in Figure 11.8. The control system can now solve the
+puzzle in the outside world by executing the instructions as they are popped
+from this stack.
+There is one more observation that we should make. Recall that the trees we
+discussed in Chapter 8 use a pointer system that points down the tree, thereby
+allowing us to move from a parent node to its children. In the case of a search
+tree, however, the control system must be able to move from a child to its parent
+as it moves up the tree from the goal state to the start state. Such trees are constructed with their pointer systems pointing up rather than down. That is, each
+child node contains a pointer to its parent rather than the parent nodes containing pointers to their children. (In some applications, both sets of pointers are
+used to allow movement within the tree in both directions).
+For our example in Figure 11.7, we chose a starting configuration that produces a
+manageable search tree. In contrast, the search tree generated in an attempt to
+solve a more complex problem could grow much larger. In a game of chess, there
+are twenty possible first moves so the root node of the search tree in such a case
+would have twenty children rather than the three in the case of our example.
+Moreover, a game of chess can easily consist of thirty to thirty-five pairs of
+moves. Even in the case of the eight-puzzle, the search tree can become quite
+large if the goal is not quickly reached. As a result, developing a full search tree
+can become as impractical as representing the entire state graph.
+One strategy for countering this problem is to change the order in which the
+search tree is constructed. Rather than building it in a breadth-first manner
+(meaning that the tree is constructed layer by layer), we can pursue the more
+promising paths to greater depths and consider the other options only if these
+original choices turn out to be false leads. This results in a depth-first construction of the search tree, meaning that the tree is constructed by building vertical
+paths rather than horizontal layers. More precisely, this approach is often called
+a best-first construction in recognition of the fact that the vertical path chosen
+for pursuit is the one that appears to offer the best potential.
+The best-first approach is similar to the strategy that we as humans would
+apply when faced with the eight-puzzle. We would rarely pursue several options
+at the same time, as modeled by the breadth-first approach. Instead, we probably
+would select the option that appeared most promising and follow it first. Note
+that we said appeared most promising. We rarely know for sure which option is
+best at a particular point. We merely follow our intuition, which may, of course,
+lead us astray. Nonetheless, the use of such intuitive information seems to give
+humans an advantage over the brute-force methods in which each option was
+given equal attention, and it would therefore seem prudent to apply intuitive
+methods in automated control systems.
+To this end, we need a way of identifying which of several states appears to
+be the most promising. Our approach is to use a heuristic, which in our case is
+a quantitative value associated with each state that attempts to measure the “distance” from that state to the nearest goal. In a sense, our heuristic is a measure of
+projected cost. Given a choice between two states, the one with the smaller
+heuristic value is the one from which a goal can apparently be reached with the
+least cost. This state, therefore, would represent the direction we should pursue.
+A heuristic should have two characteristics. First, it should constitute a reasonable estimate of the amount of work remaining in the solution if the associated state were reached. This means that it can provide meaningful information
+when selecting among options—the better the estimate provided by the heuristic, the better will be the decisions that are based on the information. Second, the
+heuristic should be easy to compute. This means that its use has a chance of benefiting the search process rather than of becoming a burden.
+Early work in artificial intelligence approached the subject in the context of explicitly
+writing programs to simulate intelligence. However, many argue today that human
+intelligence is not based on the execution of complex programs but instead by simple
+stimulus-response functions that have evolved over generations. This theory of
+“intelligence” is known as behavior-based intelligence because “intelligent” stimulusresponse functions appear to be the result of behaviors that caused certain individuals to survive and reproduce while others did not.
+Behavior-based intelligence seems to answer several questions in the artificial
+intelligence community such as why machines based on the von Neumann architecture easily outperform humans in computational skills but struggle to exhibit common sense. Thus behavior-based intelligence promises to be a major influence in
+artificial intelligence research. As described in the text, behavior-based techniques
+have been applied in the field of artificial neural networks to teach neurons to behave
+in desired ways, in the field of genetic algorithms to provide an alternative to the
+more traditional programming process, and in robotics to improve the performance of
+machines through reactive strategies.
+A simple heuristic in the case of the eight-puzzle would be to estimate the
+“distance” to the goal by counting the number of tiles that are out of place—the
+conjecture being that a state in which four tiles are out of place is farther from
+the goal (and therefore less appealing) than a state in which only two tiles are
+out of place. However, this heuristic does not take into account how far out of
+position the tiles are. If the two tiles are far from their proper positions, many
+productions could be required to move them across the puzzle.
+A slightly better heuristic, then, is to measure the distance each tile is from
+its destination and add these values to obtain a single quantity. A tile immediately adjacent to its final destination would be associated with a distance of one,
+whereas a tile whose corner touches the square of its final destination would be
+associated with a distance of two (because it must move at least one position vertically and another position horizontally). This heuristic is easy to compute and
+produces a rough estimate of the number of moves required to transform the
+puzzle from its current state to the goal. For instance, the heuristic value associated with the configuration in Figure 11.9 is seven (because tiles 2, 5, and 8 are
+each a distance of one from their final destinations while tiles 3 and 6 are each a
+distance of two from home). In fact, it actually takes seven moves to return this
+puzzle configuration to the solved configuration.
+Now that we have a heuristic for the eight-puzzle, the next step is to incorporate it into our decision-making process. Recall that a human faced with a decision tends to select the option that appears closest to the goal. Thus our search
+procedure should consider the heuristic of each leaf node in the search tree and
+pursue the search from a leaf node associated with the smallest value. This is the
+strategy adopted in Figure 11.10, which presents an algorithm for developing a
+search tree and executing the solution obtained.
+Let us apply this algorithm to the eight-puzzle, starting from the initial configuration in Figure 11.6. First, we establish this initial state as the root node and
+record its heuristic value, which is five. Then, the first pass through the body of
+the while statement instructs us to add the three nodes that can be reached from
+the initial state, as shown in Figure 11.11. Note that we have recorded the heuristic value of each leaf node in parentheses beneath the node.
+The goal node has not been reached, so we again pass through the body of
+the while statement, this time extending our search from the leftmost node (“the
+leftmost leaf node with the smallest heuristic value”). After this, the search tree
+has the form displayed in Figure 11.12.
+The heuristic value of the leftmost leaf node is now five, indicating that this
+branch is perhaps not a good choice to pursue after all. The algorithm picks up
+on this and in the next pass through the while statement instructs us to expand
+the tree from the rightmost node (which now is the “leftmost leaf node with the
+smallest heuristic value”). Having been expanded in this fashion, the search tree
+appears as in Figure 11.13.
+At this point the algorithm seems to be on the right track. Because the heuristic value of this last node is only three, the while statement instructs us to continue
+pursuing this path, and the search focuses toward the goal, producing the search
+tree appearing in Figure 11.14. Comparing this with the tree in Figure 11.7 shows
+that, even with the temporary wrong turn taken early on by the new algorithm,
+the use of heuristic information has greatly decreased the size of the search tree
+and produced a much more efficient process.
+After reaching the goal state, the while statement terminates, and we move
+on to traverse the tree from the goal node up to the root, pushing the productions
+encountered onto a stack as we go. The resultant stack appears as depicted earlier, in Figure 11.8.
+Finally, we are instructed to execute these productions as they are popped
+from the stack. At this point, we would observe the puzzle-solving machine
+lower its finger and begin to move the tiles.
+One final comment regarding heuristic searching is in order. The algorithm
+we have proposed in this section, which is often called the best-fit algorithm, is
+not gauranteed to find be the best solution in all applications. For example, when
+searching for a path to a city using a Global Positioning System (GPS) in an automobile, one would like to find the shortest path rather than just any path. The A*
+algorithm (pronounced “A star algorithm”) is a modified version of our best-fit
+algorithm that finds an optimal solution. The major difference between the two
+algorithms is that, in addition to a hueristic value, the A* algorithm takes into
+account the “accumulated cost” incurred to reach each leaf node when selecting
+the next node to expand. (In the case of an automobile’s GPS, this cost is the distance traveled that the GPS obtains from its internal database.) Thus, the A*
+algorithm bases its decisions on estimates of the cost of complete potential paths
+rather than merely on projections of remaining costs.
+In this section we explore issues of handling knowledge, learning, and dealing
+with very complex problems, which continue to challenge researchers in the
+field of artificial intelligence. These activities involve capabilities that appear to
+be easy for human minds but apparently tax the capabilities of machines. For
+now, much of the progress in developing “intelligent” agents has been achieved
+essentially by avoiding direct confrontation with these issues—perhaps by applying clever shortcuts or limiting the scope in which a problem arises.
+In our discussion of perception we saw that understanding images requires a significant amount of knowledge about the items in the image and that the meaning
+of a sentence might depend on its context. These are examples of the role played
+by the warehouse of knowledge, often called real-world knowledge, maintained
+by human minds. Somehow, humans store massive amounts of information and
+draw from that information with remarkable efficiency. Giving machines this
+capability is a major challenge in artificial intelligence.
+The underlying goal is to find ways to represent and store knowledge. This is
+complicated by the fact that, as we have already seen, knowledge occurs in both
+declarative and procedural forms. Thus, representing knowledge is not merely
+the representation of facts, but instead encompasses a much broader spectrum.
+Whether a single scheme for representing all forms of knowledge will ultimately
+be found is therefore questionable.
+The problem, however, is not just to represent and store knowledge. The
+knowledge must also be readily accessible, and achieving this accessibility is a
+challenge. Semantic nets, as introduced in Section 11.2, are often used as a means
+of knowledge representation and storage, but extracting information from them
+can be problematic. For example, the significance of the statement “Mary hit
+John” depends on the relative ages of Mary and John. (Are the ages 2 and 30 or
+vice versa?) This information would be stored in the complete semantic net suggested by Figure 11.3, but extracting such information during contextual analysis
+could require a significant amount of searching through the net.
+Yet another problem dealing with accessing knowledge is identifying knowledge that is implicitly, instead of explicitly, related to the task at hand. Rather
+than answering the question “Did Arthur win the race?” with a blunt “No,” we
+want a system that might answer with “No, he came down with the flu and was
+not able to compete.” In the next section we will explore the concept of associative memory, which is one area of research that is attempting to solve this
+related information problem. However, the task is not merely to retrieve related
+information. We need systems that can distinguish between related information
+and relevant information. For example, an answer such as “No, he was born in
+January and his sister’s name is Lisa” would not be considered a worthy
+response to the previous question, even though the information reported is in
+some way related.
+Another approach to developing better knowledge extraction systems has
+been to insert various forms of reasoning into the extraction process, resulting in
+what is called meta-reasoning—meaning reasoning about reasoning. An example,
+originally used in the context of database searches, is to apply the closed-world
+assumption, which is the assumption that a statement is false unless it can be
+explicitly derived from the information available. For example, it is the closedworld assumption that allows a database to conclude that Nicole Smith does not
+subscribe to a particular magazine even though the database does not contain any
+information at all about Nicole. The process is to observe that Nicole Smith is not
+on the subscription list and then apply the closed-world assumption to conclude
+that Nicole Smith does not subscribe.
+On the surface the closed-world assumption appears trivial, but it has consequences that demonstrate how apparently innocent meta-reasoning techniques
+can have subtle, undesirable effects. Suppose, for example, that the only knowledge we have is the single statement
+Mickey is a mouse OR Donald is a duck.
+From this statement alone we cannot conclude that Mickey is in fact a mouse.
+Thus the closed-world assumption forces us to conclude that the statement
+Mickey is a mouse.
+is false. In a similar manner, the closed-world assumption forces us to conclude
+that the statement
+Donald is a duck.
+is false. Thus, the closed-world assumption has led us to the contradictory conclusion that although at least one of the statements must be true, both are false.
+Understanding the consequences of such innocent-looking meta-reasoning techniques is a goal of research in the fields of both artificial intelligence and database, and it also underlines the complexities involved in the development of
+intelligent systems.
+Finally, there is the problem, known as the frame problem, of keeping stored
+knowledge up to date in a changing environment. If an intelligent agent is going to
+use its knowledge to determine its behavior, then that knowledge must be current.
+But the amount of knowledge required to support intelligent behavior can be enormous, and maintaining that knowledge in a changing environment can be a massive undertaking. A complicating factor is that changes in an environment often
+alter other items of information indirectly and accounting for such indirect consequences is difficult. For example, if a flower vase is knocked over and broken, your
+knowledge of the situation no longer contains the fact that water is in the vase,
+even though spilling the water was only indirectly involved with breaking the vase.
+Thus, to solve the frame problem not only requires the ability to store and retrieve
+massive amounts of information in an efficient manner, but it also demands that
+the storage system properly react to indirect consequences.
+In addition to representing and manipulating knowledge, we would like to give
+intelligent agents the ability to acquire new knowledge. We can always “teach” a
+computer-based agent by writing and installing a new program or explicitly
+adding to its stored data, but we would like intelligent agents to be able to learn
+on their own. We want agents to adapt to changing environments and to perform
+tasks for which we cannot easily write programs in advance. A robot designed for
+household chores will be faced with new furniture, new appliances, new pets,
+and even new owners. An autonomous, self-driving car must adapt to variations
+in the boundary lines on roads. Game playing agents should be able to develop
+and apply new strategies.
+One way of classifying approaches to computer learning is by the level of
+human intervention required. At the first level is learning by imitation, in
+which a person directly demonstrates the steps in a task (perhaps by carrying
+out a sequence of computer operations or by physically moving a robot through
+a sequence of motions) and the computer simply records the steps. This form of
+learning has been used for years in application programs such as spreadsheets
+and word processors, where frequently occurring sequences of commands are
+recorded and later replayed by a single request. Note that learning by imitation
+places little responsibility on the agent.
+At the next level is learning by supervised training. In supervised training
+a person identifies the correct response for a series of examples and then the
+agent generalizes from those examples to develop an algorithm that applies to
+new cases. The series of examples is called the training set. Typical applications
+of supervised training include learning to recognize a person’s handwriting or
+voice, learning to distinguish between junk and welcome email, and learning
+how to identify a disease from a set of symptoms.
+A third level is learning by reinforcement. In learning by reinforcement,
+the agent is given a general rule to judge for itself when it has succeeded or failed
+at a task during trial and error. Learning by reinforcement is good for learning
+how to play a game like chess or checkers, as success or failure is easy to define.
+In contrast to supervised training, learning by reinforcement allows the agent to
+act autonomously as it learns to improve its behavior over time.
+Learning remains a challenging field of research since no general, universal
+principle has been found that covers all possible learning activities. However,
+there are numerous examples of progress. One is ALVINN (Autonomous Land
+Vehicle in a Neural Net), a system developed at Carnegie Mellon University to
+learn to steer a van with an on-board computer using a video camera for input.
+The approach used was supervised training. ALVINN collected data from a
+human driver and used that data to adjust its own steering decisions. As it
+learned, it would predict where to steer, check its prediction against the human
+driver’s data, and then modify its parameters to come closer to the human’s
+steering choice. ALVINN succeeded well enough that it could steer the van at
+seventy miles an hour, leading to additional research that has produced control
+systems that have successfully driven at highway speeds in traffic.
+Finally, we should recognize a phenomenon that is closely related to learning:
+discovery. The distinction is that learning is “target based” whereas discovery is
+not. The term discovery has a connotation of the unexpected that is not present in
+learning. We might set out to learn a foreign language or how to drive a car, but we
+might discover that those tasks are more difficult than we expected. An explorer
+might discover a large lake, whereas the goal was merely to learn what was there.
+Developing agents with the ability to discover efficiently requires that the
+agent be able to identify potentially fruitful “trains of thought.” Here, discovery
+relies heavily on the ability to reason and the use of heuristics. Moreover, many
+potential applications of discovery require that an agent be able to distinguish
+meaningful results from insignificant ones. A data mining agent, for example,
+should not report every trivial relationship it finds.
+An important concern in representing and storing knowledge is that it be done in a
+way that is compatible with the system that must access the knowledge. It is in this
+context that logic programming (see Section 6.7) often proves beneficial. In such systems knowledge is represented by “logic” statements such as
+Dumbo is an elephant.
+and
+X is an elephant implies X is gray.
+Such statements can be represented using notational systems that are readily
+accessible to the application of inference rules. In turn, sequences of deductive reasoning, such as we saw in Figure 11.5, can be implemented in a straightforward manner. Thus, in logic programming the representation and storage of knowledge are
+well integrated with the knowledge extraction and application process. One might
+say that logic programming systems provide a “seamless” boundary between stored
+knowledge and its application.
+Examples of success in computer discovery systems include Bacon, named
+after the philosopher Sir Francis Bacon, that has discovered (or maybe we should
+say “rediscovered”) Ohm’s law of electricity, Kepler’s third law of planetary
+motion, and the conservation of momentum. Perhaps more persuasive is the system AUTOCLASS that, using infrared spectral data, has discovered new classes of
+stars that were previously unknown in astronomy—a true scientific discovery by
+a computer.
+The A* algorithm (introduced in the previous section) will find the optimal solution to many search problems; however there are some problems that are too
+complex to be solved (execution exceeds available memory or cannot be completed within a reasonable amount of time) by such seach techniques. For these
+problems, a solution can sometimes be discovered through an evolutionary
+process involving many generations of trial solutions. This strategy is the foundation for what is called genetic algorithms. In essence, genetic algorithms will
+discover a solution by random behavior combined with a simulation of reproductive theory and the evolutionary process of natural selection.
+A genetic algorithm begins by generating a random pool of trial solutions.
+Each solution is just a guess. (In the case of the eight-puzzle, a trial solution can
+be a random sequence of tile movements.) Each trial solution is called a
+chromosome and each component of the chromosome is a called a gene (a single tile movement in the case of the eight-puzzle).
+Since each initial chromosome is a random guess, it is very unlikely that it will
+represent a solution to the problem at hand. Thus, the genetic algorithm proceeds
+to generate a new pool of chromosomes whereby each chromosome is an offspring
+(child) of two chromosomes (parents) of the previous pool. The parents are randomly selected from the pool giving a probabilistic preference to those chromosomes that appear to provide the best chance of leading to a solution, thereby
+emulating the evolutionary principle of survival of the fittest. (Determining which
+chromosomes are the best candidates for parenthood is perhaps the most problematic step in the generic algrithm process.) Each offspring is a random combination
+of genes from the parents. In addition, a resulting offspring may occasionally be
+mutated in some random way (switch two moves). Hopefully, by repeating this
+process over and over, better and better trial solutions will evolve until a very good
+one, if not the best, is discovered. Unfortunately, there is no assurance that the
+genetic algorithm will ultimately find a solution, yet research has demonstrated
+that genetic algorithms can be effective in solving a surprisingly wide range of
+complex problems.
+When applied to the task of program development, the genetic algorithm
+approach is known as evolutionary programming. Here the goal is to develop
+programs by allowing them to evolve rather than by explicitly writing them.
+Researchers have applied evolutionary programming techniques to the programdevelopment process using functional programming languages. The approach
+has been to start with a collection of programs that contain a rich variety of functions. The functions in this starting collection form the “gene pool” from which
+future generations of programs will be constructed. One then allows the evolutionary process to run for many generations, hoping that by producing each generation from the best performers in the previous generation, a solution to the
+target problem will evolve.
+With all the progress that has been made in artificial intelligence, many problems in the field continue to tax the abilities of computers using traditional algorithmic approaches. Sequences of instructions do not seem capable of perceiving
+and reasoning at levels comparable to those of the human mind. For this reason,
+many researchers are turning to approaches that leverage phenomena observed
+in nature. One such approach is genetic algorithms presented in the previous
+section. Another approach is the artificial neural network.
+Artificial neural networks provide a computer processing model that mimics
+networks of neurons in living biological systems. A biological neuron is a single
+cell with input tentacles called dendrites and an output tentacle called the axon
+(Figure 11.15). The signals transmitted via a cell’s axon reflect whether the cell is
+in an inhibited or excited state. This state is determined by the combination of
+signals received by the cell’s dendrites. These dendrites pick up signals from the
+axons of other cells across small gaps known as synapses. Research suggests that
+the conductivity across a single synapse is controlled by the chemical composition of the synapse. That is, whether the particular input signal will have an
+exciting or inhibiting effect on the neuron is determined by the chemical composition of the synapse. Thus it is believed that a biological neural network learns
+by adjusting these chemical connections between neurons.
+A neuron in an artificial neural network is a software unit that mimics this
+basic understanding of a biological neuron. It produces an output of 1 or 0,
+depending on whether its effective input exceeds a given value, which is called
+the neuron’s threshold value. This effective input is a weighted sum of the
+actual inputs, as represented in Figure 11.16. In this figure, a neuron is represented with an oval and connections between neurons are represented with
+arrows. The values obtained from the axons of other neurons (denoted by v1, v2,
+and v3) are used as inputs to the depicted neuron. In addition to these values,
+each connection is associated with a weight (denoted by w1, w2, and w3). The
+neuron receiving these input values multiplies each by the associated weight for
+the connection and then adds these products to form the effective input (v1w1 ϩ
+v2w2 ϩ v3w3). If this sum exceeds the neuron’s threshold value, the neuron produces an output of 1 (simulating an excited state); otherwise the neuron produces a 0 as its output (simulating an inhibited state).
+Following the lead of Figure 11.16, we adopt the convention of representing
+neurons as circles. Where each input connects to a neuron, we record the weight
+associated with that input. Finally, we write the neuron’s threshold value in the
+middle of the circle. As an example, Figure 11.17 represents a neuron with a
+threshold value of 1.5 and weights of Ϫ2, 3, and Ϫ1 associated with each of its
+input connections. Therefore if the neuron receives the inputs 1, 1, and 0, its
+effective input is (1)(Ϫ2) ϩ (1)(3) ϩ (0)(Ϫ1) ϭ 1, and thus its output is 0. But, if
+the neuron receives 0, 1, and 1, its effective input is (0)(Ϫ2) ϩ (1)(3) ϩ (1)(Ϫ1) ϭ 2,
+which exceeds the threshold value. The neuron’s output will thus be 1.
+The fact that a weight can be positive or negative means that the corresponding
+input can have either an inhibiting or exciting effect on the receiving neuron. (If the
+weight is negative, then a 1 at that input position reduces the weighted sum and
+thus tends to hold the effective input below the threshold value. In contrast, a positive weight causes the associated input to have an increasing effect on the weighted
+sum and thus increase the chances of that sum exceeding the threshold value.)
+Moreover, the actual size of the weight controls the degree to which the corresponding input is allowed to inhibit or excite the receiving neuron. Consequently, by
+adjusting the values of the weights throughout an artificial neural network, we can
+program the network to respond to different inputs in a predetermined manner.
+Artificial neural networks are typically arranged in a topology of several layers. The input neurons are in the first layer and the output neurons are in the
+last. Additional layers of neurons (called hidden layers) may be included
+between the input and output layers. Each neuron of one layer is interconnected
+with every neuron in the subsequent layer. As an example, the simple network
+presented in Figure 11.18a is programmed to produce an output of 1 if its two
+inputs differ and an output of 0 otherwise. If, however, we change the weights to
+those shown in Figure 11.18b, we obtain a network that responds with a 1 if both
+of its inputs are 1s and with a 0 otherwise.
+We should note that the network configuration in Figure 11.18 is far more
+simplistic than an actual biological network. A human brain contains approximately 1011 neurons with about 104 synapses per neuron. Indeed, the dendrites of
+a biological neuron are so numerous that they appear more like a fibrous mesh
+than the individual tentacles represented in Figure 11.15.
+An important feature of artificial neural networks is that they are not programmed in the traditional sense but instead are trained. That is, a programmer
+does not determine the values of the weights needed to solve a particular problem and then “plug” those values into the network. Instead, an artificial neural
+network learns the proper weight values via supervised training (Section 11.4)
+involving a repetitive process in which inputs from the training set are applied to
+the network and then the weights are adjusted by small increments so that the
+network’s performance approaches the desired behavior.
+It is interesting to note how genetic algorithm techniques have been
+applied to the task of training artificial neural networks. In particular, to train a
+neural network, a number of sets of weights for the network can be randomly
+generated—each set of which will serve as a chromosome for the genetic algorithm. Then, in a step-by-step process, the network can be assigned the
+weights represented by each chromosone and tested over a variety of inputs.
+The chromosones producing fewest errors during this testing process can then
+be given a greater probabilty of being selected as parents for the next generation. In numerous experiments this appoarch has ultimately led to a successful
+set of weights.
+Let us consider an example in which training an artificial neural network to
+solve a problem has been successful and perhaps more productive than trying to
+provide a solution by means of traditional programming techniques. The problem is one that might be faced by a robot when trying to understand its environment via the information it receives from its video camera. Suppose, for
+example, that the robot must distinguish between the walls of a room, which are
+white, and the floor, which is black. At first glance, this would appear to be an
+easy task: Simply classify the white pixels as part of a wall and the black pixels at
+part of the floor. However, as the robot looks in different directions or moves
+around in the room, various lighting conditions can cause the wall to appear gray
+in some cases whereas in other cases the floor may appear gray. Thus, the robot
+needs to learn to distinguish between walls and floor under a wide variety of
+lighting conditions.
+To accomplish this, we could build an artificial neural network whose
+inputs consist of values indicating the color characteristics of an individual
+pixel in the image as well as a value indicating the overall brightness of the
+entire image. We could then train the network by providing it with numerous
+examples of pixels representing parts of walls and floors under various lighting conditions.
+The results of training an artificial neural network using these techniques
+are represented in Figure 11.19. The first column represents the original images;
+the next depicts the robot’s interpretation. Note that although the walls in the top
+original are rather dark, the robot has correctly identified most of the associated
+pixels as white wall pixels, yet the floor in the lower image has still been correctly identifed. (The ball in the images was part of a more extensive experiment.) You will also notice that the robot’s image processing system is not
+perfect. The neural network has mistakenly identified some of the wall pixels as
+floor pixels (and some of the floor pixels as wall pixels). These are examples of
+realities that often must be accommodated in the application of a theory. In this
+case, the errors can be corrected by programming the robot to ignore individual
+floor pixels that appear among a multitude of wall pixels (and vice versa).
+Beyond simple learning problems (such as the classification of pixels), artificial neural networks have been used to learn sophisticated intelligent behavior, as testified by the ALVINN project cited in the previous section. Indeed,
+ALVINN was an artificial neural network whose composition was surprisingly
+simple (Figure 11.20). Its input was obtained from a 30 by 32 array of sensors,
+each of which observed a unique portion of the video image of the road ahead
+and reported its findings to each of four neurons on a hidden layer. (Thus, each
+of these four neurons had 960 inputs.) The output of each of these four neurons
+was connected to each of thirty output neurons, whose outputs indicated the
+direction to steer. Excited neurons at one end of the thirty neuron row indicated
+a sharp turn to the left, while excited neurons at the other end indicated a sharp
+turn to the right.
+ALVINN was trained by “watching” a human drive while it made its own
+steering decisions, comparing its decisions to those of the human, and making
+slight modifications to its weights to bring its decisions closer to those of the
+human. There was, however, an interesting side issue. Although ALVINN
+learned to steer following this simple technique, ALVINN did not learn how to
+recover from mistakes. Thus, the data collected from the human was artificially
+enriched to include recovery situations as well. (One approach to this recovery
+training that was initially considered was to have the human swerve the vehicle
+so that ALVINN could watch the human recover and thus learn how to recover
+on its own. But unless ALVINN was disabled while the human performed the initial swerve procedure, ALVINN learned to swerve as well as to recover—an obviously undesirable trait.)
+The human mind has the amazing ability to retrieve information that is associated with a current topic of consideration. When we experience certain smells,
+we might readily recall memories of our childhood. The sound of a friend’s voice
+might conjure an image of the person or perhaps memories of good times.
+Certain music might generate thoughts of particular holiday seasons. These are
+examples of associative memory—the retrieval of information that is associated
+with, or related to, the information at hand.
+To construct machines with associative memory has been a goal of research
+for many years. One approach is to apply techniques of artificial neural networks. For instance, consider a network consisting of many neurons that are
+interconnected to form a web with no inputs or outputs. (In some designs,
+called Hopfield networks, the output of each neuron is connected as inputs to
+each of the other neurons; in other cases the output of a neuron may be connected only to its immediate neighbors.) In such a system, the excited neurons
+will tend to excite other neurons, whereas the inhibited neurons will tend to
+inhibit others. In turn, the entire system may be in a constant state of change,
+or it may be that the system will find its way to a stable configuration where
+the excited neurons remain excited and the inhibited neurons remain inhibited. If we start the network in a nonstable configuration that is close to a stable one, we would expect it to wander to that stable configuration. In a sense,
+when given a part of a stable configuration, the network might be able to complete the configuration.
+Now suppose that we represent an excited state by 1 and an inhibited state
+by 0 so that the condition of the entire network at any time can be envisioned as
+a configuration of 0s and 1s. Then, if we set the network to a bit pattern that is
+close to a stable pattern, we could expect the network to shift to the stable pattern. In other words, the network might find the stable bit pattern that is close to
+the pattern it was given. Thus if some of the bits are used to encode smells and
+others are used to encode childhood memories, then initializing the smell bits
+according to a certain stable configuration could cause the remaining bits to find
+their way to the associated childhood memory.
+Now consider the artificial neural network shown in Figure 11.21.
+Following the conventions used to depict artificial neural networks, each circle
+in the figure represents a neuron whose threshold value is recorded inside the
+circle. Instead of arrows, the lines connecting the circles represent two-way
+connections between the corresponding neurons. That is, a line connecting
+two neurons indicates that the output of each neuron is connected as an input
+to the other. Thus the output of the center neuron is connected as an input to
+each of the neurons around the perimeter, and the output of each of the neurons around the perimeter is connected as an input to the center neuron as
+well as an input to each of its immediate neighbors on the perimeter. Two connected neurons associate the same weight with each other’s output. This common weight is recorded next to the line connecting the neurons. Thus the
+neuron at the top of the diagram associates a weight of Ϫ1 with the input it
+receives from the center neuron and a weight of 1 with the inputs it receives
+from its two neighbors on the perimeter. Likewise, the center neuron associates a weight of Ϫ1 with each of the values it receives from the neurons around
+the perimeter.
+The network operates in discrete steps in which all neurons respond to their
+inputs in a synchronized manner. To determine the next configuration of the network from its current configuration, we determine the effective inputs of each
+neuron throughout the network and then allow all the neurons to respond to
+their inputs at the same time. The effect is that the entire network follows a coordinated sequence of compute effective inputs, respond to inputs, compute effective inputs, respond to inputs, etc.
+Consider the sequence of events that would occur if we initialized the network with its two rightmost neurons inhibited and the other neurons excited
+(Figure 11.22a). The two leftmost neurons would have effective inputs of 1, so
+they would remain excited. But, their neighbors on the perimeter would have
+effective inputs of 0, so they would become inhibited. Likewise, the center neuron would have an effective input of Ϫ4, so it would become inhibited. Thus the
+entire network would shift to the configuration shown in Figure 11.22b in which
+only the two leftmost neurons are excited. Since the center neuron would now
+be inhibited, the excited conditions of the leftmost neurons would cause the top
+and bottom neurons to become excited again. Meanwhile, the center neuron
+would remain inhibited since it would have an effective input of Ϫ2. Thus the
+network would shift to the configuration in Figure 11.22c, which would then lead
+to the configuration in Figure 11.22d. (You might wish to confirm that a blinking
+phenomenon would occur if the network were initialized with only the upper
+four neurons excited. The top neuron would remain excited while its two neighbors on the perimeter and the center neuron would alternate between being
+excited and inhibited.)
+Finally, observe that the network has two stable configurations: one in which
+the center neuron is excited and the others are inhibited, and another configuration in which the center neuron is inhibited and the others are excited. If we initialize the network with the center neuron excited and no more than two of the
+other neurons excited, the network will wander to the former stable configuration.
+If we initialize the network with at least four adjacent neurons on the perimeter in
+their excited states, the network will wander to the latter configuration. Thus we
+could say that the network associates the former stable configuration with initial
+patterns in which its center neuron and fewer than three of its perimeter neurons
+are excited, and associates the latter stable configuration with initial patterns in
+which four or more of its perimeter neurons are excited. In short, the network represents an elementary associative memory.
+Robotics is the study of physical, autonomous agents that behave intelligently.
+As with all agents, robots must be able to perceive, reason, and act in their environment. Research in robotics thereby encompasses all areas of artificial intelligence as well as drawing heavily from mechanical and electrical engineering.
+To interact with the world, robots need mechanisms to manipulate objects and
+to move about. In the early days of robotics, the field was closely allied with the
+development of manipulators, most often mechanical arms with elbows, wrists, and
+hands or tools. Research dealt not only with how such devices could be maneuvered but also with how knowledge of their location and orientation could be maintained and applied. (You are able to close your eyes and still touch your nose with
+your finger because your brain maintains a record of where your nose and finger
+are.) Over time robots’ arms have become more dexterous to where, with a sense of
+touch based on force feedback, they can handle eggs and paper cups successfully.
+Recently, the development of faster, lighter weight computers has lead to
+greater research in mobile robots that can move about. Achieving this mobility
+has led to an abundance of creative designs. Researchers in robot locomotion
+have developed robots that swim like fish, fly like dragonflies, hop like grasshoppers, and crawl like snakes.
+Wheeled robots are very popular since they are relatively easy to design and
+build, but they are limited in the type of terrain they can traverse. Overcoming
+this restriction, using combinations of wheels or tracks to climb stairs or roll over
+rocks, is the goal of current research. As an example, the NASA Mars rovers used
+specially designed wheels to move on rocky soil.
+Legged robots offer greater mobility but are significantly more complex. For
+instance, two-legged robots, designed to walk as humans, must constantly monitor and adjust their stance or they will fall. However, such difficulties can be
+overcome, as exemplified by the two-legged humanoid robot named Asimo,
+developed by Honda, that can walk up stairs and even run.
+Despite great advances in manipulators and locomotion, most robots are
+still not very autonomous. Industrial robot arms are typically rigidly programmed for each task and work without sensors, assuming parts will be given
+to them in exact positions. Other mobile robots such as the NASA Mars rovers
+and military unmanned aerial vehicles (UAVs) rely on human operators for
+their intelligence.
+Overcoming this dependency on humans is a major goal of current research.
+One question deals with what an autonomous robot needs to know about its
+environment and to what degree it needs to plan its actions in advance. One
+approach is to build robots that maintain detailed records of their environments,
+containing an inventory of objects and their locations with which they develop
+precise plans of action. Research in this direction depends heavily on progress in
+knowledge representation and storage as well as improved reasoning and plandevelopment techniques.
+An alternative approach is to develop reactive robots that, rather than maintaining complex records and expending great efforts in constructing detailed
+plans of action, merely apply simple rules for interacting with the world to guide
+their behavior moment by moment. Proponents of reactive robotics argue that
+when planning a long trip by car, humans do not make all-encompassing,
+detailed plans in advance. Instead, they merely select the major roads, leaving
+such details as where to eat, what exits to take, and how to handle detours for
+later consideration. Likewise, a reactive robot that needs to navigate a crowded
+hallway or to go from one building to another does not develop a highly detailed
+plan in advance, but instead applies simple rules to avoid each obstacle as it is
+encountered. This is the approach taken by the best-selling robot in history, the
+iRobot Roomba vacuum cleaner, which moves about a floor in a reactive mode
+without bothering to remember the details of furniture and other obstacles. After
+all, the family pet will probably not be in the same place next time.
+Of course, no single approach will likely prove the best for all situations. Truly
+autonomous robots will most likely use multiple levels of reasoning and planning,
+applying high-level techniques to set and achieve major goals and lower-level
+reactive systems to achieve minor sub-goals. An example of such multilevel reasoning is found in the Robocup competition—an international competition of
+robot soccer teams—that serves as a forum for research toward developing a team
+of robots that can beat world-class human soccer teams by the year 2050. Here
+the emphasis is not just to build mobile robots that can “kick” a ball but to design
+a team of robots that cooperate with each other to obtain a common goal. These
+robots not only have to move and to reason about their actions, but they have to
+reason about the actions of their teammates and their opponents.
+Another example of research in robotics is the field known as evolutionary
+robotics in which theories of evolution are applied to develop schemes for both
+low-level reactive rules and high-level reasoning. Here we find the survival-ofthe-fittest theory being used to develop devices that over multiple generations
+acquire their own means of balance or mobility. Much of the research in this
+area distinguishes between a robot’s internal control system (largely software)
+and the physical structure of its body. For example, the control system for a
+swimming tadpole robot was transferred to a similar robot with legs. Then evolutionary techniques were applied within the control system to obtain a robot that
+crawled. In other instances, evolutionary techniques have been applied to a
+robot’s physical body to discover positions for sensors that are optimal for performing a particular task. More challenging research seeks ways to evolve software control systems simultaneously with physical body structures.
+To list all the impressive results from research in robotics would be an overwhelming task. Our current robots are far from the powerful robots in fictional
+movies and novels, but they have achieved impressive successes on specific
+tasks. We have robots that can drive in traffic, behave like pet dogs, and guide
+weapons to their targets. However, while relishing in these successes, we should
+note that the affection we feel for an artificial pet dog and the awesome power of
+smart weapons raise social and ethical questions that challenge society. Our
+future is what we make it.
+Without a doubt, advances being made in artificial intelligence have the potential of benefiting humankind, and it is easy to become caught up in the enthusiasm generated by the potential benefits. However, there are also potential perils
+lurking in the future whose ramifications could be as devastating as their counterparts are beneficial. The distinction is often merely one’s point of view or perhaps one’s position in society—one person’s gain might be another’s loss. It is
+fitting then that we take a moment to look at advancing technology from alternative perspectives.
+Some view the advancement of technology as a gift to humanity—a means of
+freeing humans from boring, mundane tasks and opening the door to more
+enjoyable lifestyles. But others see this same phenomenon as a curse that robs
+citizens of employment and channels wealth toward those with power. This, in
+fact, was a message of the devoted humanitarian Mahatma Gandhi of India. He
+repeatedly argued that India would be better served by replacing large textile
+mills with spinning wheels placed in the homes of the peasants. In this way, he
+claimed, centralized mass production that employed only a few would be
+replaced by a distributed mass production system that would benefit multitudes.
+History is full of revolutions with roots in the disproportionate distribution of
+wealth and privilege. If today’s advancing technology is allowed to entrench such
+discrepancies, catastrophic consequences could result.
+But the consequences of building increasingly intelligent machines is more
+subtle—more fundamental—than those dealing with power struggles between
+different segments of society. The issues strike at the very heart of humanity’s
+self-image. In the nineteenth century, society was appalled by Charles Darwin’s
+theory of evolution and the thought that humans might have evolved from lesser
+life forms. How then will society react if faced with the onslaught of machines
+whose mental capabilities challenge those of humans?
+In the past, technology has developed slowly, allowing time for our selfimage to be preserved by readjusting our concept of intelligence. Our ancient
+ancestors would have interpreted the mechanical devices of the nineteenth century as having supernatural intelligence, but today we do not credit these
+machines with any intelligence at all. But how will humanity react if machines
+truly challenge the intelligence of humans, or, more likely, if the capabilities of
+machines begin to advance faster than our ability to adapt?
+We might get a clue to humanity’s potential reaction to machines that challenge our intellect by considering society’s response to IQ tests in the middle of
+the twentieth century. These tests were considered to identify a child’s level of
+intelligence. Children in the United States were often classified by their performances on these tests and channeled into educational programs accordingly. In
+turn, educational opportunities were opened to those children who performed
+well on these tests, whereas children who performed poorly were directed
+toward remedial programs of study. In short, when given a scale on which to
+measure an individual’s intelligence, society tended to disregard the capabilities
+of those who found themselves on the lower end of the scale. How then would
+society handle the situation if the “intellectual” capabilities of machines became
+comparable, or even appeared to be comparable, with those of humans? Would
+society discard those whose abilities were seen as “inferior” to those of
+machines? If so, what would be the consequences for those members of society?
+Should a person’s dignity be subject to how he or she compares to a machine?
+We have already begun to see the intellectual powers of humans challenged
+by machines in specific fields. Machines are now capable of beating experts in
+chess; computerized expert systems are capable of giving medical advice; and
+simple programs managing investment portfolios often outperform investment
+professionals. How do such systems affect the self-image of the individuals
+involved? How will an individual’s self-esteem be affected as that individual is
+outperformed by machines in more and more areas?
+Many argue that the intelligence possessed by machines will always be inherently different from that of humans since humans are biological and machines
+are not. Thus, they argue, machines will never reproduce a human’s decisionmaking process. Machines might reach the same decisions as humans but those
+decisions would not be made on the same basis as those made by humans. To
+what extent, then, are there different kinds of intelligence, and would it be ethical
+for society to follow paths proposed by nonhuman intelligence?
+In his book, Computer Power and Human Reason, Joseph Weizenbaum argues
+against the unchecked application of artificial intelligence as follows:
+Computers can make judicial decisions, computers can make psychiatric judgments. They can flip coins in much more sophisticated ways
+than can the most patient human being. The point is that they ought
+not be given such tasks. They might even be able to arrive at “correct”
+decisions in some cases—but always and necessarily on bases no
+human being should be willing to accept.
+There have been many debates on “Computers and Mind.” What I conclude here is that the relevant issues are neither technological nor even
+mathematical; they are ethical. They cannot be settled by asking questions beginning with “can.” The limits of the applicability of computers
+are ultimately statable only in terms of oughts. What emerges as the
+most elementary insight is that, since we do not now have any ways of
+making computers wise, we ought not now to give computers tasks that
+demand wisdom.
+You might argue that much of this section borders on science fiction rather
+than computer science. It was not too long ago, however, that many dismissed
+the question “What will happen if computers take over society?” with the same
+it-will-never-happen attitude. But in many respects, that day has now arrived.
+If a computerized database erroneously reports that you have a bad credit rating, a criminal record, or an overdrawn checking account, is it the computer’s
+statement or your claim of innocence that will prevail? If a malfunctioning
+navigational system indicates that a fog-covered runway is in the wrong place,
+where will the aircraft land? If a machine is used to predict the public’s reaction to various political decisions, which decision does a politician make? How
+many times has a clerk been unable to help you because “the computer is
+down”? Who (or what), then, is in charge? Have we not already surrendered
+society to machines?
